@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<title>PageStack</title>
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		<div layout verticle center>
+			<div id="msgbox" layout horizontal center></div>
+			<div layout horizontal center>
+				<div layout verticle center>
+					<p><button>Push</button></p>
+					<p><button>Pop</button></p>
+					<p><button>Clear</button></p>
+				</div>
+				<div layout verticle center>
+					<div id="chromePages">
+					</div>
+				</div>
+				<div layout verticle center>
+					<div id="stackPages">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- include *.js -->
+
+		<!-- module -->
+		<script src="../../../module/md5.js"></script>
+
+		<!-- lib -->
+		<script src="../../../lib/util.js"></script>
+
+		<!-- MVC classes -->
+		<script src="../../../Model/ModelChromePage.js"></script>
+		<script src="../../../Model/ModelStackPage.js"></script>
+		<script src="../../../Model/ModelStackPages.js"></script>
+
+		<script src="../../ViewPopup.js"></script>
+
+		<script src="../../../Controller/ControllerPopup.js"></script>
+
+		<!-- main -->
+		<script src="popup.js"></script>
+
+	</body>
+
+</html>
