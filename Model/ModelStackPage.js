@@ -1,5 +1,5 @@
-function ModelStackPage(chromePage, tag) {
-	ModelChromePage.call(this, chromePage.title, chromePage.url);
+function ModelStackPage(chromePage, newTitle, tag) {
+	ModelChromePage.call(this, newTitle, chromePage.url);
 	this.tag = tag;
 }
 

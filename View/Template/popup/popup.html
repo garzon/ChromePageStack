@@ -2,17 +2,7 @@
 <html>
 	<head>
 		<title>PageStack</title>
-		<style>
-			body {
-				width: 600px;
-			}
-			.box {
-				border: 1px solid;
-			}
-			button {
-				width: 50px;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="popup.css" />
 	</head>
 
 	<body>
@@ -26,9 +16,9 @@
 						<tr>
 							<td class="box">
 								<table>
-									<tr><td><button>Push</button></td></tr>
-									<tr><td><button>Pop</button></td></tr>
-									<tr><td><button>Clear</button></td></tr>
+									<tr><td><button id="btn_push">Push</button></td></tr>
+									<tr><td><button id="btn_pop">Pop</button></td></tr>
+									<tr><td><button id="btn_clear">Clear</button></td></tr>
 								</table>
 							</td>
 							<td id="chromePages" class="box"></td>
