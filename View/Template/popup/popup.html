@@ -3,29 +3,41 @@
 	<head>
 		<title>PageStack</title>
 		<style>
-
+			body {
+				width: 600px;
+			}
+			.box {
+				border: 1px solid;
+			}
+			button {
+				width: 50px;
+			}
 		</style>
 	</head>
 
 	<body>
-		<div layout verticle center>
-			<div id="msgbox" layout horizontal center></div>
-			<div layout horizontal center>
-				<div layout verticle center>
-					<p><button>Push</button></p>
-					<p><button>Pop</button></p>
-					<p><button>Clear</button></p>
-				</div>
-				<div layout verticle center>
-					<div id="chromePages">
-					</div>
-				</div>
-				<div layout verticle center>
-					<div id="stackPages">
-					</div>
-				</div>
-			</div>
-		</div>
+		<table>
+			<tr>
+				<td id="msgbox"></td>
+			</tr>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td class="box">
+								<table>
+									<tr><td><button>Push</button></td></tr>
+									<tr><td><button>Pop</button></td></tr>
+									<tr><td><button>Clear</button></td></tr>
+								</table>
+							</td>
+							<td id="chromePages" class="box"></td>
+							<td id="stackPages" class="box"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
 
 		<!-- include *.js -->
 

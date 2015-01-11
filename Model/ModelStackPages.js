@@ -6,11 +6,12 @@ function ModelStackPages() {
 
 ModelStackPages.prototype.loadChromePages = function(callback) {
 	this.chromePages = {};
+	var model = this;
 	chrome.tabs.query({}, function(tabs){
 		for(var i in tabs){
 			var tab = tabs[i];
 			var newPage = new ModelChromePage(tab.title, tab.url);
-			this.chromePages[newPage.UID] = newPage;
+			model.chromePages[newPage.UID] = newPage;
 		}
 		if(typeof(callback) != "undefined") callback();
 	});
@@ -26,16 +27,13 @@ ModelStackPages.prototype.loadTags = function() {
 
 ModelStackPages.prototype.loadStackPages = function(callback) {
 	this.stackPages = {};
-	chrome.storage.sync.get("stackPages", 
-		(function(model){
-			return function(obj){
-				if(typeof(obj) != "undefined") this.stackPages = obj;
-				else throw "Cannot load the stack.";
-				model.loadTags();
-				if(typeof(callback) != "undefined") callback();
-			};
-		})(this)
-	);
+	var model = this;
+	chrome.storage.sync.get("stackPages", function(obj){
+		if(typeof(obj) != "undefined") model.stackPages = obj;
+		else throw "Cannot load the stack.";
+		model.loadTags();
+		if(typeof(callback) != "undefined") callback();
+	});
 };
 
 ModelStackPages.prototype.saveStackPages = function(callback) {

@@ -6,13 +6,21 @@ function ViewPopup(msgbox, chromeBox, stackBox) {
 
 ViewPopup.newSelectTag = function(id, tags) {
 	var res = newSelect(id, tags);
-	res.onchange = "selectTag_onchange(" + id + ")";
+	res.addEventListener('change', function() { selectTag_onchange(id); });
 	return res;
 };
 
 ViewPopup.newChromePage = function(id, title, tags) {
+	var echoTags = [];
+	for(var i in tags) {
+		if(tags[i])
+			echoTags.push(i);
+	}
+	echoTags.push("new tag..");
+
 	var titleText = newInputText(id, title);
-	var tagSelect = ViewPopup.newSelectTag(id, tags);
+	var tagSelect = ViewPopup.newSelectTag(id, echoTags);
+
 	return newCheckbox(id, [titleText, tagSelect]);
 };
 
