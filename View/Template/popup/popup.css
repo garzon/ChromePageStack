@@ -3,9 +3,11 @@ body {
 }
 .box {
 	border: 1px solid;
+	vertical-align: top;
+	text-align: center;
 }
 button {
-	width: 50px;
+	width: 70px;
 }
 p {
 	margin: 5px;
@@ -13,11 +15,14 @@ p {
 select {
 	width: 80px;
 }
+li {
+	text-align: left;
+}
 .input-tag {
 	width: 80px;
 }
 .list-header {
-	text-align: center;
+	text-align: left;
 	font-size: 20px;
 	margin: 5px;
 }
@@ -25,4 +30,8 @@ select {
 	text-align: left;
 	font-size: 15px;
 	margin: 3px;
+}
+.span-text {
+	text-align: center;
+	width: auto;
 }

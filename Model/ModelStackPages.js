@@ -61,11 +61,16 @@ ModelStackPages.prototype.openNewTab = function(chromePage, callback) {
 	chrome.tabs.create(info, callback);
 };
 
-ModelStackPages.prototype.popStackPage = function(tag, UID, callback) {
-	this.openNewTab(this.stackPages[tag][UID], callback);
-	delete(this.stackPages[tag][UID]);
+ModelStackPages.prototype.resetStackPage = function(tag, UID) {
+	if(typeof(this.stackPages[tag][UID]) != "undefined")
+		delete(this.stackPages[tag][UID]);
 	if(isEmptyObject(this.stackPages[tag]))
 		delete(this.stackPages[tag]);
+};
+
+ModelStackPages.prototype.popStackPage = function(tag, UID, callback) {
+	this.openNewTab(this.stackPages[tag][UID], callback);
+	this.resetStackPage(tag, UID);
 };
 
 ModelStackPages.prototype.init = function(callback) {

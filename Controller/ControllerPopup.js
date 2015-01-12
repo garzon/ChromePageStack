@@ -27,8 +27,26 @@ ControllerPopup.prototype.pushStack = function() {
 	});
 };
 
+ControllerPopup.prototype.getStackSelected = function() {
+	var tmpArray = [], counter = 0;
+	for(var i in this.model.stackPages) {
+		var pages = this.model.stackPages[i];
+		for(var id in pages) {
+			if(this.view.getChecked(id)) {
+				counter += 1;
+				tmpArray.push([i, id]);
+			}
+		}
+	}
+	return [tmpArray, counter];
+};
+
 ControllerPopup.prototype.popStack = function() {
-	var counter = 0;
+
+	var res = this.getStackSelected();
+	var tmpArray = res[0];
+	var counter = res[1];
+
 	var controller = this;
 	var callback = function() {
 		counter -= 1;
@@ -39,19 +57,22 @@ ControllerPopup.prototype.popStack = function() {
 			});
 		}
 	};
-	var tmpArray = [];
-	for(var i in this.model.stackPages) {
-		var pages = this.model.stackPages[i];
-		for(var id in pages) {
-			if(this.view.getChecked(id)) {
-				counter += 1;
-				tmpArray.push([i, id]);
-			}
-		}
-	}
+
 	for(var i = 0; i < tmpArray.length; i++) {
 		this.model.popStackPage(tmpArray[i][0], tmpArray[i][1], callback);
 	}
+};
+
+ControllerPopup.prototype.resetStack = function() {
+	var tmpArray = this.getStackSelected()[0];
+	for(var i = 0; i < tmpArray.length; i++) {
+		this.model.resetStackPage(tmpArray[i][0], tmpArray[i][1]);
+	}
+	var controller = this;
+	this.model.saveStackPages(function() {
+		controller.view.msg("Successfully reset.");
+		controller.init();
+	});
 };
 
 ControllerPopup.prototype.showChromePages = function() {

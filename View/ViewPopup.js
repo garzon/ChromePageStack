@@ -74,7 +74,7 @@ ViewPopup.prototype.renderChromeList = function(chromePages, tags) {
 		view.autoCheck.call(view, this.id, this.checked);
 	};
 	this.chromeBox.innerHTML = "";
-	this.chromeBox.appendChild(ViewPopup.newHeader("Can be saved:", "chromeList", "list-header", chk_onclick));
+	this.chromeBox.appendChild(ViewPopup.newHeader("Pages not saved:", "chromeList", "list-header", chk_onclick));
 	this.chkboxToPagesId["chkbox_chromeList"] = [];
 	this.chromeBox.appendChild(newHr());
 	if(isEmptyObject(chromePages)) {
