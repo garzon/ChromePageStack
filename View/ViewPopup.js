@@ -102,24 +102,58 @@ ViewPopup.prototype.renderStackList = function(stackPages) {
 		this.stackBox.appendChild(newTextNode("None"));
 		return;
 	}
+
+	// render tree view
+	var treeFolders = [];
+
 	for(var tag in stackPages) {
 		var pages = stackPages[tag];
 		var id = "chkbox_tagList_" + tag;
 		var subId = "tagList_" + tag;
+
+		var treeFolderNodes = [];
+
 		var tagHeader = ViewPopup.newHeader("Tag: " + tag, subId, "tag-header", chk_onclick);
-		this.stackBox.appendChild(tagHeader);
-		var ul = newUl();
+		// this.stackBox.appendChild(tagHeader);
+
+		// var ul = newUl();
+
 		this.chkboxToPagesId[id] = [];
 		this.chkboxToPagesId["chkbox_stackList"].push(subId);
+
 		for(var i in pages) {
-			var li = newLi();
+			// var li = newLi();
 			var page = pages[i];
+
 			var node = ViewPopup.newStackPage(i, page.url, page.title);
-			li.appendChild(node);
-			ul.appendChild(li);
+			var treeFolderNode = newTreeNodeView(node);
+			treeFolderNodes.push(treeFolderNode);
+
 			this.chkboxToPagesId[id].push(i);
 			this.chkboxToPagesId["chkbox_stackList"].push(i);
 		}
-		this.stackBox.appendChild(ul);
+
+		// this.stackBox.appendChild(ul);
+
+		var treeFolder = newTreeFolderView(tagHeader, treeFolderNodes);
+		treeFolders.push(treeFolder);
 	}
+
+	var tree = newTreeView(treeFolders);
+	tree.id = "stackTree";
+
+	$('#stackTree').ace_tree({
+		multiSelect: true,
+		loadingHTML:'<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+		'open-icon' : 'icon-minus',
+		'close-icon' : 'icon-plus',
+		'selectable' : true,
+		'selected-icon' : 'icon-ok',
+		'unselected-icon' : 'icon-remove'
+	});
+
+	var tree = newTreeView(treeFolders);
+
+	this.stackBox.appendChild(tree);
+
 };

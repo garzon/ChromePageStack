@@ -2,7 +2,20 @@
 <html>
 	<head>
 		<title>PageStack</title>
+	
+		<!-- basic styles -->
+		<link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="../assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="../assets/css/ace.min.css" />
+		<link rel="stylesheet" href="../assets/css/ace-responsive.min.css" />
+		<link rel="stylesheet" href="../assets/css/ace-skins.min.css" />
+
+		<!-- my style -->
 		<link rel="stylesheet" type="text/css" href="popup.css" />
+
 	</head>
 
 	<body>
@@ -17,10 +30,10 @@
 							<td id="chromePages" class="box"></td>
 							<td>
 								<table>
-									<tr><td><button id="btn_push">→ Push</button></td></tr>
-									<tr><td><button id="btn_pop">Pop ↖</button></td></tr>
-									<tr><td><button id="btn_reset">Reset ←</button></td></tr>
-									<tr><td><button id="btn_clear">Clear</button></td></tr>
+									<tr><td><button id="btn_push" class="btn btn-success">→ Push</button></td></tr>
+									<tr><td><button id="btn_pop" class="btn btn-primary">Pop ↖</button></td></tr>
+									<tr><td><button id="btn_reset" class="btn btn-warning">Reset ←</button></td></tr>
+									<tr><td><button id="btn_clear" class="btn btn-danger">Clear</button></td></tr>
 								</table>
 							</td>
 							<td id="stackPages" class="box"></td>
@@ -34,8 +47,13 @@
 
 		<!-- module -->
 		<script src="../../../module/md5.js"></script>
+		<script src='../assets/js/jquery-2.0.3.min.js'></script>
+		<script src='../assets/js/bootstrap.min.js'></script>
+		<script src="../assets/js/ace-elements.min.js"></script>
+		<script src="../assets/js/ace.min.js"></script>
 
 		<!-- lib -->
+		<script src="../../../lib/treeView.js"></script>
 		<script src="../../../lib/util.js"></script>
 
 		<!-- MVC classes -->

@@ -6,7 +6,7 @@ function selectTag_onchange(id) {
 		var newEle = newInputText("tag_" + id, "default");
 		newEle.className = "input-tag";
 		var container = thisSelect.parentElement;
-		thisSelect.hidden = "hidden";
+		$(thisSelect).hide();
 		container.appendChild(newEle);
 	}
 }
