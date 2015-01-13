@@ -29,8 +29,12 @@ ModelStackPages.prototype.loadStackPages = function(callback) {
 	this.stackPages = {};
 	var model = this;
 	chrome.storage.sync.get("stackPages", function(obj){
-		if(typeof(obj) != "undefined") model.stackPages = obj["stackPages"];
-		else throw "Cannot load the stack.";
+		if(typeof(obj) != "undefined") {
+			if(obj.hasOwnProperty("stackPages"))
+				model.stackPages = obj["stackPages"];
+			else
+				model.stackPages = {};
+		} else throw "Cannot load the stack.";
 		model.loadTags();
 		if(typeof(callback) != "undefined") callback();
 	});
@@ -48,7 +52,7 @@ ModelStackPages.prototype.clearStack = function(callback) {
 };
 
 ModelStackPages.prototype.pushStackPage = function(stackPage) {
-	if(typeof(this.stackPages[stackPage.tag]) == "undefined")
+	if(!(this.stackPages.hasOwnProperty(stackPage.tag)))
 		this.stackPages[stackPage.tag] = {};
 	this.stackPages[stackPage.tag][stackPage.UID] = stackPage;
 };
